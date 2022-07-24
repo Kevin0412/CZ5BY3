@@ -28,7 +28,7 @@ r=radius*((1-1/e_1**2)/(1-1/e_1**2+np.tan(np.radians(latitude))**2))**0.5/np.cos
 ans1=0
 for h in height:
     ans=np.arcsin((-r+(r**2+h**2+h**2/np.tan(np.radians(b))**2+2*r*h+2*r*h/np.tan(np.radians(b))**2)**0.5)/(1+1/np.tan(np.radians(b))**2)/np.tan(np.radians(b))/(r+h))#解三角形，计算角度
-    ans=np.arcsin(np.sin(ans/2)/np.cos(np.radians(latitude)))/np.pi*(23*3600+56*60+4)#角度投影
+    ans=np.arcsin(np.sin(ans/2)/np.cos(np.radians(latitude)))/np.pi*(23*3600+56*60+4)#角度投影并转为时间
     ans1+=ans
 print(str(c*int(ans1/120))+"'"+str((ans1/2)%60)+'"'+' ±'+str(abs(ans1/2-ans))+'"')#输出结果
-img1.save(name.split('.')[0]+'_1.png')#导出图片，估读红点位置
+img1.save(name.split('.')[0]+'_1.png')#导出图片，估读红点时间，红点位置位于正东或正西方向，为经过发射场同纬度的时间
